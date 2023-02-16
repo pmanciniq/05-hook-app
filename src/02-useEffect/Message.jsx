@@ -1,25 +1,26 @@
-import { useEffect,useState } from "react"
+import { useEffect, useState } from "react";
 
 export const Message = () => {
   const [coords, setCoords] = useState({
-    x: 0,y:0
-  })
-  //es importante usar el "cleaner" del useEffect ya que no hacerlo puede generar fugas de memoria, ya que se 
+    x: 0,
+    y: 0,
+  });
+  //es importante usar el "cleaner" del useEffect ya que no hacerlo puede generar fugas de memoria, ya que se
   //sigue ejecutando el proceso aunque se desmonte el componente.
-    useEffect(() => {
-        const onMouseMove = ({x,y}) => {
-          const coords = {x,y};
-          setCoords({x,y});
-        };
-        window.addEventListener('mousemove', onMouseMove);
-        return () => {
-          window.removeEventListener('mousemove',onMouseMove);
-        }
-    },[]);
+  useEffect(() => {
+    const onMouseMove = ({ x, y }) => {
+      const coords = { x, y };
+      setCoords({ x, y });
+    };
+    window.addEventListener("mousemove", onMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+    };
+  }, []);
   return (
     <>
-        <h3>Usuario ya existe</h3>
-        {JSON.stringify(coords)}
+      <h3>Usuario ya existe</h3>
+      {JSON.stringify(coords)}
     </>
-  )
-}
+  );
+};
