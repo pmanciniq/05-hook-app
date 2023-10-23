@@ -12,7 +12,7 @@ export const MultipleCustomHooks = () => {
     return (
         <>
             <h1>
-                Breaking Bad Quotes
+                BreakingBad Quotes
             </h1>
             <hr />
             {
